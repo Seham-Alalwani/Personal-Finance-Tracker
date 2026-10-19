@@ -2,7 +2,7 @@ const KEY='finance-tracker-demo-v1';
 const incomeCategories=['Salary','Freelance','Investments','Other'];
 const expenseCategories=['Groceries','Food & Dining','Shopping','Bills & Utilities','Entertainment','Transport','Other'];
 const $=id=>document.getElementById(id);
-const money=n=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(n);
+const money=n=>new Intl.NumberFormat('en-US',{style:'currency',currency:'SAR'}).format(n);
 const isoDate=(daysAgo=0)=>{const d=new Date();d.setDate(d.getDate()-daysAgo);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
 function demo(){return [{id:1,type:'income',amount:2800,category:'Salary',description:'Monthly salary',date:isoDate(6)},{id:2,type:'expense',amount:120,category:'Groceries',description:'Grocery shopping',date:isoDate(5)},{id:3,type:'expense',amount:45,category:'Food & Dining',description:'Dinner out',date:isoDate(4)},{id:4,type:'expense',amount:180,category:'Shopping',description:'New clothes',date:isoDate(3)},{id:5,type:'expense',amount:250,category:'Bills & Utilities',description:'Utilities',date:isoDate(2)},{id:6,type:'expense',amount:60,category:'Entertainment',description:'Movies',date:isoDate(1)},{id:7,type:'income',amount:300,category:'Freelance',description:'Design project',date:isoDate(0)}]}
 function load(){try{const raw=localStorage.getItem(KEY);if(raw!==null){const parsed=JSON.parse(raw);if(Array.isArray(parsed))return parsed}}catch(e){console.warn('Could not load saved data',e)}return demo()}
